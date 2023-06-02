@@ -52,7 +52,7 @@ function AccountContainer() {
         a.category.localeCompare(b.category)
       );
     }
-  }, [transactionsToDisplay, selectedSort]);
+  }, [transactionsToDisplay, selectedSort]);//use memo ensures the computations only occur if the selectedSort changes
 
   return (
     <div>
