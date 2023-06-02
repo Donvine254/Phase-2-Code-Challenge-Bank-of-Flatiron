@@ -5,9 +5,10 @@ import { baseUrl } from "./AccountContainer";
 function Transaction({ transaction }) {
   function handleDelete(transaction) {
     Swal.fire({
-      title: "Are You Sure",
+      title: "Are You Sure?",
       icon: "warning",
-      text: `This action will delete ${transaction.description} from the database`,
+      iconColor:"red",
+      html: `This action will delete <strong> ${transaction.description}</strong> transaction from the database.`,
       showCancelButton: "true",
     }).then((result) => {
       if (result.isConfirmed) {

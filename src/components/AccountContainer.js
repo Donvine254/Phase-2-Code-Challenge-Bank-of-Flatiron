@@ -56,7 +56,7 @@ function AccountContainer() {
         selectedSort={selectedSort}
         onSortChange={setSelectedSort}
       />
-      <AddTransactionForm/>
+      <AddTransactionForm />
       {error ? (
         <h1>Error occurred while fetching transactions.</h1>
       ) : (
