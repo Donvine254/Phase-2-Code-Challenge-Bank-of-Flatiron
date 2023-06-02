@@ -9,6 +9,7 @@ function AccountContainer() {
   const [transactions, setTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedSort, setSelectedSort] = useState("All");
+  const [error, setError] = useState(false);
 
   //function to getTransactions from the server
 
@@ -19,10 +20,12 @@ function AccountContainer() {
         if (response.status === 200) {
           const data = await response.json();
           setTransactions(data);
-        } else throw new Error(`Failed to fetch with status`);
+        } else
+          throw new Error(`Failed to fetch with status ${response.status}`);
       })();
     } catch (error) {
       console.error(error);
+      setError(true);
     }
 
     return () => {};
@@ -53,8 +56,12 @@ function AccountContainer() {
         selectedSort={selectedSort}
         onSortChange={setSelectedSort}
       />
-      <AddTransactionForm />
-      <TransactionsList transactions={transactionsToDisplay} />
+      <AddTransactionForm/>
+      {error ? (
+        <h1>Error occurred while fetching transactions.</h1>
+      ) : (
+        <TransactionsList transactions={transactionsToDisplay} />
+      )}
     </div>
   );
 }
