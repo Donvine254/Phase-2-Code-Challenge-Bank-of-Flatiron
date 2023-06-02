@@ -31,7 +31,7 @@ function AccountContainer() {
     return () => {};
   }, [transactions]);
   //handle searching transactions
-  let transactionsToDisplay = transactions.filter((transaction) =>
+  const transactionsToDisplay = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(search.toLowerCase())
   );
   //handleSorting transactions

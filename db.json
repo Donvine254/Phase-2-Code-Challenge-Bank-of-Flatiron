@@ -62,6 +62,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2023-07-07",
+      "description": "Tuition Fees, Moringa School",
+      "category": "Fees",
+      "amount": "52100",
+      "id": 13
     }
   ]
 }
