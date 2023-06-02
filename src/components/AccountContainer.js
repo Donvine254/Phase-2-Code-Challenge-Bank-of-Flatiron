@@ -8,6 +8,7 @@ export const baseUrl = "http://localhost:8001/transactions";
 function AccountContainer() {
   const [transactions, setTransactions] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedSort, setSelectedSort] = useState("All");
 
   //function to getTransactions from the server
 
@@ -26,14 +27,30 @@ function AccountContainer() {
 
     return () => {};
   }, [transactions]);
-//handle searching transactions
-  const transactionsToDisplay = transactions.filter((transaction) =>
+  //handle searching transactions
+  let transactionsToDisplay = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(search.toLowerCase())
   );
+  //handleSorting transactions
+  //sort for All, Amount, Description and Category
+  if (selectedSort === "Amount") {
+    transactionsToDisplay.sort((a, b) => b.amount - a.amount);
+  } else if (selectedSort === "Description") {
+    transactionsToDisplay.sort((a, b) =>
+      a.description.localeCompare(b.description)
+    );
+  } else if (selectedSort === "Category") {
+    transactionsToDisplay.sort((a, b) => a.category.localeCompare(b.category));
+  }
 
   return (
     <div>
-      <Search search={search} onSearchChange={setSearch} />
+      <Search
+        search={search}
+        onSearchChange={setSearch}
+        selectedSort={selectedSort}
+        onSortChange={setSelectedSort}
+      />
       <AddTransactionForm />
       <TransactionsList transactions={transactionsToDisplay} />
     </div>
