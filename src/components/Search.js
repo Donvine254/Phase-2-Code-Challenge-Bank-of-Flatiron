@@ -19,14 +19,17 @@ function Search({ search, onSearchChange, onSortChange, selectedSort }) {
           className="custom-select"
           value={selectedSort}
           onChange={(e) => onSortChange(e.target.value)}>
-          <option value="All">All</option>
-          <option value="Amount" class="ui teal button">
+          <option value="All" className="ui button">All</option>
+          <option value="Amount" className="ui button">
             Amount
           </option>
-          <option value="Category" class="ui green button">
+          <option value="Date" className="ui button">
+            Date
+          </option>
+          <option value="Category" className="ui button">
             Category
           </option>
-          <option value="Description" class="ui blue button">
+          <option value="Description" className="ui button">
             Description
           </option>
         </select>

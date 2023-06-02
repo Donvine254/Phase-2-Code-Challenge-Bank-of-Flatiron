@@ -32,9 +32,11 @@ function AccountContainer() {
     transaction.description.toLowerCase().includes(search.toLowerCase())
   );
   //handleSorting transactions
-  //sort for All, Amount, Description and Category
+  //sort for All, Amount, Date, Description and Category
   if (selectedSort === "Amount") {
     transactionsToDisplay.sort((a, b) => b.amount - a.amount);
+  } else if (selectedSort === "Date") {
+    transactionsToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
   } else if (selectedSort === "Description") {
     transactionsToDisplay.sort((a, b) =>
       a.description.localeCompare(b.description)
