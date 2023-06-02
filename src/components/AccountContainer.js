@@ -34,6 +34,7 @@ function AccountContainer() {
   function handleNewTransactions(newTransaction){
     // setTransactions((prevTD)=>[...prevTD, newTransaction])
     // console.log(newTransaction)
+    //if i setTransactions as a depedency for useEffect, i do not need to setTransactions again
   }
 
   return (

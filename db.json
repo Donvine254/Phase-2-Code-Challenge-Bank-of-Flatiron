@@ -90,6 +90,41 @@
       "category": "Internet",
       "amount": "25",
       "id": 13
+    },
+    {
+      "date": "2023-06-03",
+      "description": "Take my babes for shopping",
+      "category": "Shopping",
+      "amount": "-2500",
+      "id": 14
+    },
+    {
+      "date": "2023-06-09",
+      "description": "Mpesa, Mom",
+      "category": "Black Tax",
+      "amount": "5000",
+      "id": 15
+    },
+    {
+      "date": "2023-06-09",
+      "description": "Mpesa, Mom",
+      "category": "Black Tax",
+      "amount": "5000",
+      "id": 16
+    },
+    {
+      "date": "2023-06-03",
+      "description": "Mpesa, Mom",
+      "category": "Black Tax",
+      "amount": "5000",
+      "id": 17
+    },
+    {
+      "date": "2023-06-03",
+      "description": "Mpesa, Mom",
+      "category": "Black Tax",
+      "amount": "2500",
+      "id": 18
     }
   ]
 }

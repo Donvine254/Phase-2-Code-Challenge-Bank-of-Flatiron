@@ -48,7 +48,12 @@ function AddTransactionForm({ onFormSubmit }) {
     })
       .then((res) => res.json())
       .then((newTransaction) => onFormSubmit(newTransaction));
-    event.target.value = "";
+    setFormData({
+      date: "",
+      description: "",
+      category: "",
+      amount: 0,
+    });
   }
 
   return (
