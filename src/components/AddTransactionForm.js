@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { baseUrl } from "./AccountContainer";
 
-function AddTransactionForm({ onFormSubmit }) {
+function AddTransactionForm() {
   //initialize form data as an a object to avoid having repetitive onChange functions
   const [formData, setFormData] = useState({
     date: "",
@@ -32,13 +32,6 @@ function AddTransactionForm({ onFormSubmit }) {
       });
       return;
     }
-    Swal.fire({
-      icon: "success",
-      text: "Transaction added successfully!",
-      title: "success",
-      showCloseButton: true,
-      timer: 3000,
-    });
     fetch(baseUrl, {
       method: "POST",
       headers: {
@@ -47,7 +40,15 @@ function AddTransactionForm({ onFormSubmit }) {
       body: JSON.stringify(formData),
     })
       .then((res) => res.json())
-      .then((newTransaction) => onFormSubmit(newTransaction));
+      .then(() =>
+        Swal.fire({
+          icon: "success",
+          text: "Transaction added successfully!",
+          title: "success",
+          showCloseButton: true,
+          timer: 3000,
+        })
+      );
     setFormData({
       date: "",
       description: "",

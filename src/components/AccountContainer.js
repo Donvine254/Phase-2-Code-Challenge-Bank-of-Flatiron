@@ -31,16 +31,10 @@ function AccountContainer() {
     transaction.description.toLowerCase().includes(search.toLowerCase())
   );
 
-  function handleNewTransactions(newTransaction){
-    // setTransactions((prevTD)=>[...prevTD, newTransaction])
-    // console.log(newTransaction)
-    //if i setTransactions as a depedency for useEffect, i do not need to setTransactions again
-  }
-
   return (
     <div>
       <Search search={search} onSearchChange={setSearch} />
-      <AddTransactionForm onFormSubmit={handleNewTransactions} />
+      <AddTransactionForm />
       <TransactionsList transactions={transactionsToDisplay} />
     </div>
   );
