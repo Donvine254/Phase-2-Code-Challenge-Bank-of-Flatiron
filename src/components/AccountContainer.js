@@ -3,7 +3,7 @@ import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
-const baseUrl = "http://localhost:8001/transactions";
+export const baseUrl = "http://localhost:8001/transactions";
 
 function AccountContainer() {
   const [transactions, setTransactions] = useState([]);
@@ -25,16 +25,21 @@ function AccountContainer() {
     }
 
     return () => {};
-  }, []);
+  }, [transactions]);
 //handle searching transactions
   const transactionsToDisplay = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(search.toLowerCase())
   );
 
+  function handleNewTransactions(newTransaction){
+    // setTransactions((prevTD)=>[...prevTD, newTransaction])
+    // console.log(newTransaction)
+  }
+
   return (
     <div>
       <Search search={search} onSearchChange={setSearch} />
-      <AddTransactionForm />
+      <AddTransactionForm onFormSubmit={handleNewTransactions} />
       <TransactionsList transactions={transactionsToDisplay} />
     </div>
   );
