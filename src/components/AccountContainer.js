@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
@@ -31,22 +31,28 @@ function AccountContainer() {
     return () => {};
   }, [transactions]);
   //handle searching transactions
-  const transactionsToDisplay = transactions.filter((transaction) =>
-    transaction.description.toLowerCase().includes(search.toLowerCase())
-  );
+  const transactionsToDisplay = useMemo(() => {
+    return transactions.filter((transaction) =>
+      transaction.description.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [transactions, search]);
   //handleSorting transactions
   //sort for All, Amount, Date, Description and Category
-  if (selectedSort === "Amount") {
-    transactionsToDisplay.sort((a, b) => b.amount - a.amount);
-  } else if (selectedSort === "Date") {
-    transactionsToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
-  } else if (selectedSort === "Description") {
-    transactionsToDisplay.sort((a, b) =>
-      a.description.localeCompare(b.description)
-    );
-  } else if (selectedSort === "Category") {
-    transactionsToDisplay.sort((a, b) => a.category.localeCompare(b.category));
-  }
+  useMemo(() => {
+    if (selectedSort === "Amount") {
+      transactionsToDisplay.sort((a, b) => b.amount - a.amount);
+    } else if (selectedSort === "Date") {
+      transactionsToDisplay.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (selectedSort === "Description") {
+      transactionsToDisplay.sort((a, b) =>
+        a.description.localeCompare(b.description)
+      );
+    } else if (selectedSort === "Category") {
+      transactionsToDisplay.sort((a, b) =>
+        a.category.localeCompare(b.category)
+      );
+    }
+  }, [transactionsToDisplay, selectedSort]);
 
   return (
     <div>
