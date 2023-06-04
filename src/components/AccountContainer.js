@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import Axios from "axios";
 
 export const baseUrl = "http://localhost:8001/transactions";
 
@@ -16,10 +17,9 @@ function AccountContainer() {
   useEffect(() => {
     try {
       (async () => {
-        const response = await fetch(baseUrl);
+        const response = await Axios.get(baseUrl);
         if (response.status === 200) {
-          const data = await response.json();
-          setTransactions(data);
+          setTransactions(response.data);
         } else
           throw new Error(`Failed to fetch with status ${response.status}`);
       })();

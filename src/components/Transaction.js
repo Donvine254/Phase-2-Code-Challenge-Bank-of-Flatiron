@@ -1,6 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { baseUrl } from "./AccountContainer";
+import Axios from "axios";
 
 function Transaction({ transaction }) {
 
@@ -21,9 +22,7 @@ function Transaction({ transaction }) {
           text: "Transaction deleted successfully!",
           timer: 3000,
         });
-        fetch(`${baseUrl}/${transaction.id}`, {
-          method: "DELETE",
-        });
+        Axios.delete(`${baseUrl}/${transaction.id}`)
       }
     });
   }

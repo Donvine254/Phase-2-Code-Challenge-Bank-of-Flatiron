@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { baseUrl } from "./AccountContainer";
+import Axios from "axios";
 
 function AddTransactionForm() {
   //initialize form data as an a object to avoid having repetitive onChange functions
@@ -34,14 +35,7 @@ function AddTransactionForm() {
       });
       return;
     }
-    fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
+    Axios.post(baseUrl, formData)
       .then(() =>
         Swal.fire({
           icon: "success",
