@@ -52,7 +52,8 @@ function AccountContainer() {
         a.category.localeCompare(b.category)
       );
     }
-  }, [transactionsToDisplay, selectedSort]);//use memo ensures the computations only occur if the selectedSort changes
+  }, [transactionsToDisplay, selectedSort]); //use memo ensures the computations only occur if the selectedSort changes
+
 
   return (
     <div>
@@ -64,7 +65,7 @@ function AccountContainer() {
       />
       <AddTransactionForm />
       {error ? (
-        <h1>Error occurred while fetching transactions.</h1>
+        <h1>An error occurred while fetching transactions.</h1>
       ) : (
         <TransactionsList transactions={transactionsToDisplay} />
       )}

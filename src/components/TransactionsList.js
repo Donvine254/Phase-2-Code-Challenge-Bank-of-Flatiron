@@ -4,7 +4,7 @@ import Transaction from "./Transaction";
 function TransactionsList({ transactions }) {
   return (
     <table className="ui celled striped padded table">
-      <tbody>
+      <thead>
         <tr>
           <th>
             <h3 className="ui center aligned header">Date</h3>
@@ -19,20 +19,28 @@ function TransactionsList({ transactions }) {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
+      </thead>
+      <tbody>
         {transactions ? (
           transactions.length > 0 ? (
             transactions.map((transaction) => (
               <Transaction key={transaction.id} transaction={transaction} />
             ))
           ) : (
-            <th>
-              <h3 className="ui centered header">
-                No transactions available
-              </h3>
-            </th>
+            <tr>
+              <td colSpan="4">
+                <h3 className="ui centered header">
+                  No transactions available
+                </h3>
+              </td>
+            </tr>
           )
         ) : (
-          <p>Loading transactions...</p>
+          <tr>
+            <td colSpan="4">
+              <p>Loading transactions...</p>
+            </td>
+          </tr>
         )}
       </tbody>
     </table>

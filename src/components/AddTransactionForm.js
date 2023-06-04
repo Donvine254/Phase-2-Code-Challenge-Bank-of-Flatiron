@@ -16,18 +16,20 @@ function AddTransactionForm() {
       ...formData,
       [event.target.name]: event.target.value,
     });
+  
   }
   //function to handleFormSubmission
 
   function handleSubmit(event) {
     event.preventDefault();
-    const isEmpty = Object.values(formData).some((value) => value === ""); //checking for empty values
+    const isEmpty = Object.values(formData).some((value) => value === ""|| value===0); //checking for empty values
     if (isEmpty) {
       Swal.fire({
         title: "An error occurred",
         icon: "error",
         text: "Please fill out all fields before submitting!",
         showCloseButton: true,
+        showCancelButton: true,
         timer: 3000,
       });
       return;
@@ -49,6 +51,7 @@ function AddTransactionForm() {
           timer: 3000,
         })
       );
+     
     setFormData({
       date: "",
       description: "",

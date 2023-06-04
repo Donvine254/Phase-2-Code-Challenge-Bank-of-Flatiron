@@ -3,6 +3,9 @@ import Swal from "sweetalert2";
 import { baseUrl } from "./AccountContainer";
 
 function Transaction({ transaction }) {
+
+  const {date, description, category, amount}= transaction
+
   function handleDelete(transaction) {
     Swal.fire({
       title: "Are You Sure?",
@@ -27,10 +30,10 @@ function Transaction({ transaction }) {
 
   return (
     <tr>
-      <td>{transaction.date}</td>
-      <td>{transaction.description}</td>
-      <td>{transaction.category}</td>
-      <td>{transaction.amount}</td>
+      <td>{date}</td>
+      <td>{description}</td>
+      <td>{category}</td>
+      <td>{amount}</td>
       <td>
         <button
           className="ui button red"
